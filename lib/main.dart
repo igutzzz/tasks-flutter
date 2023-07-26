@@ -38,7 +38,7 @@ class _TasksState extends State<Tasks> {
           child: Container(
             padding: const EdgeInsets.all(20),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
@@ -80,10 +80,9 @@ class _TasksState extends State<Tasks> {
                     ],
                   ),
                 ),
-                ConstrainedBox(
-                  constraints:
-                      const BoxConstraints(maxHeight: 200, minHeight: 56.0),
+                Expanded(
                   child: ListView.builder(
+                      clipBehavior: Clip.antiAlias,
                       itemCount: tasks.length,
                       itemBuilder: (context, index) {
                         var title = tasks[index];
@@ -94,6 +93,7 @@ class _TasksState extends State<Tasks> {
             ),
           ),
         ),
+        bottomNavigationBar: BottomAppBar(),
       ),
     );
   }
